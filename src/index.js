@@ -1,9 +1,11 @@
 import express from 'express';
+import cors from 'cors';
 import eventoRoutes from './routes/eventoRoutes.js';
-import lugareRoutes from './routes/lugarRoutes.js';
+import lugarRoutes from './routes/lugarRoutes.js';
 import servicioRoutes from './routes/servicioRoutes.js';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -11,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/evento', eventoRoutes);
-app.use('/lugar', lugareRoutes);
+app.use('/lugar', lugarRoutes);
 app.use('/servicio', servicioRoutes);
 
 const PORT = process.env.PORT || 3000;
